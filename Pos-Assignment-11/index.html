@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width,  initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Zaki Pos</title>
+    <link rel="stylesheet" href="css/normalizeCSS.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body style="background:#eaecee;min-height: 100vh;height: auto">
+
+
+
+<!--header-->
+<header style="margin: auto;width: 100%;top: 0;z-index: 2;left: 0;position: fixed">
+    <nav class="navbar navbar-expand-lg navbar-dark m-0 p-3" style="background: #2b1775">
+        <div class="container">
+
+
+            <a class="navbar-brand active " href="#">
+                <img src="Assets/Icon/logo.png" alt="logo" height="30" width="30" loading="lazy" class="d-inline-block align-top">
+                Kaif Zakey</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <ul class="navbar-nav ml-auto">
+
+                    <i class="nav-item ">
+                        <a class="nav-link active" id="home_nav" aria-current="page"  href="#" onclick="showPage('Home')">Home</a>
+                    </i>
+
+                    <i class="nav-item ">
+                        <a class="nav-link"  href="#"  id="customer_nav" onclick="showPage('customer')">Customer</a>
+                    </i>
+
+                    <i class="nav-item">
+                        <a class="nav-link"  href="#"  id="item_nav" onclick="showPage('item')">Item</a>
+                    </i>
+
+                    <i class="nav-item">
+                        <a class="nav-link"  href="#" id="placeOrder_nav" onclick="showPage('placeOrder')">PlaceOrder</a>
+                    </i>
+
+                    <i class="nav-item">
+                        <a class="nav-link"  href="#" id="order_nav" onclick="showPage('order')" >Orders</a>
+                    </i>
+                    <i style="margin-left: 10px;position: relative;bottom: 8px ;margin-bottom: 0">
+                        <!--                        <a class="nav-link" href="../Pos-Assignment-06/LoginPage.html">-->
+                        <!--                            <button type="button" class="btn mb-0"><img src="../Pos-Assignment-06/Assets/images/logout%20(2).png" alt="logout" style="width: 30px"></button>-->
+                        <!--                        </a>-->
+                    </i>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+<!--Home section-->
+<div id="Home-section" class="page">
+
+    <main class="container-fluid m-0 p-0 " style="background: #eaecee;z-index: -1" id="dashboard">
+        <div class="container mt-0 mb-0 p-5">
+            <div class="row justify-content-center mt-5 mb-0">
+                <div class="col-12 col-md-6 col-lg-4 mb-4 ">
+                    <div class="card  shadow-lg">
+                        <img src="./Assets/Icon/customer%20(1).png" class=" custom-img " alt="...">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title custom-text-color ">100</h5>
+                            <p class="card-text text-secondary custom-font-size"> Customer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 mb-4 ">
+                    <div class="card shadow-lg ">
+                        <img src="./Assets/Icon/in-stock.png" class=" custom-img custom-bg-grey " alt="...">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title custom-text-color">100</h5>
+                            <p class="card-text text-secondary custom-font-size">Item</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 mb-4 ">
+                    <div class="card  shadow-lg">
+                        <img src="./Assets/Icon/shopping-cart%20(1).png" class=" custom-img " alt="...">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title custom-text-color">100</h5>
+                            <p class="card-text text-secondary custom-font-size">Order</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="width: auto; font-size: 50px; color: #2b1775; height:fit-content;text-shadow: #2b1775;font-weight: bolder;">Welcome to Zaki Pos System</div>
+    </main>
+
+    <footer class="p-2  "  >
+        <div class="container-fluid shadow-lg">
+            <h3 class="text-start  custom-text-color mb-5  ">Recent Orders</h3>
+
+            <div class="table-responsive">
+                <table class="table table-striped  ">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </footer>
+
+
+</div>
+
+
+<!--Customer section-->
+<div id="customer-section" class="page" style="display: none">
+
+    <main style=" padding-top: 0;   margin: 0;">
+
+
+        <div class="custom-container-fluid  mt-3">
+            <div class="row justify-content-end">
+                <section class="col-md-3 mb-1 d-flex align-items-center">
+                    <input type="text" class="form-control shadow-lg me-1" id="Csearch" placeholder="Search">
+                    <button class="btn btn-primary">Search</button>
+                </section>
+            </div>
+        </div>
+        <div class=".custom-container mt-3  p-4" style="background: #eaecee;width: 100%">
+            <div class="row " style="background: #eaecee;width: 100%">
+                <form>
+                    <div class="row d-flex justify-content-between  "  style="width: 100%" >
+                        <div class="col-md-4 mb-3  custom-margin" >
+                            <label for="cName" class="form-label">Name</label>
+                            <input type="text" class="form-control shadow-lg" id="cName">
+                        </div>
+
+                        <div class="col-md-4 mb-3  ">
+                            <label for="cPhone" class="form-label">Phone</label>
+                            <input type="text" class="form-control shadow-lg" id="cPhone">
+                        </div>
+                    </div>
+
+                    <div class="row  d-flex justify-content-between "style="width: 100%" >
+                        <div class="col-md-4 mb-3 custom-margin">
+                            <label for="cEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control shadow-lg" id="cEmail" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="cAddress" class="form-label">Address</label>
+                            <input type="text" class="form-control shadow-lg" id="cAddress">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-around mt-3">
+                        <button id="customer_save_btn" type="button" class="btn btn-success shadow-sm">Save</button>
+                        <button type="button" class="btn btn-danger shadow-sm">Delete</button>
+                        <button type="button" class="btn btn-warning shadow-sm">Update</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="p-2  " style="margin-top: 20px; max-height: fit-content;z-index: 1;" >
+        <div class="container-fluid shadow-lg" style="  padding-top: 30px;background: white;max-width: 1250px; height: 300px; border-radius: 10px;">
+
+            <div class="table-responsive  ">
+                <table class="table table-striped ">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone No</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+<!--                    <tr>-->
+<!--                        <th scope="row">1</th>-->
+<!--                        <td>Mark</td>-->
+<!--                        <td>Otto</td>-->
+<!--                        <td>@mdo</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="row">2</th>-->
+<!--                        <td>Jacob</td>-->
+<!--                        <td>Thornton</td>-->
+<!--                        <td>@fat</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="row">3</th>-->
+<!--                        <td colspan="2">Larry the Bird</td>-->
+<!--                        <td>@twitter</td>-->
+<!--                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </footer>
+
+
+</div>
+
+<!--item section-->
+<div id="item-section" class="page" style="display: none">
+
+    <main style=" padding-top: 0;margin: 0;">
+
+
+        <div class="custom-container-fluid mt-3">
+            <div class="row justify-content-end">
+                <section class="col-md-3 mb-1 d-flex align-items-center">
+                    <input type="text" class="form-control shadow-lg me-1" id="search" placeholder="Search">
+                    <button class="btn btn-primary">Search</button>
+                </section>
+            </div>
+        </div>
+        <div class=".custom-container mt-3  p-4" style="background: #eaecee;width: 100%">
+            <div class="row " style="background: #eaecee;width: 100%">
+                <form>
+                    <div class="row d-flex justify-content-between "style="width: 100%" >
+                        <!-- First two fields in the first row -->
+                        <div class="col-md-4 mb-4  custom-margin" >
+                            <label for="iName" class="form-label">Item Name</label>
+                            <input type="text" class="form-control shadow-lg" id="iName">
+                        </div>
+
+                        <div class="col-md-4 mb-4  ">
+                            <label for="iQty" class="form-label">Item_QTY</label>
+                            <input type="text" class="form-control shadow-lg" id="iQty">
+                        </div>
+                    </div>
+
+                    <div class="row  d-flex justify-content-between"  style="width: 100%" >
+                        <!-- Next two fields in the second row -->
+                        <div class="col-md-4 mb-3 custom-margin">
+                            <label for="iPrice" class="form-label">Price</label>
+                            <input type="email" class="form-control shadow-lg" id="iPrice" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="iDescription" class="form-label">Description</label>
+                            <input type="text" class="form-control shadow-lg" id="iDescription">
+<!--                            <input  class="form-control" name="iDescription" id="iDescription"  rows="5"></input>-->
+
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-around mt-3">
+                        <button id="iSave_btn" type="button" class="btn btn-success shadow-sm">Save</button>
+                        <button type="button" class="btn btn-danger shadow-sm">Delete</button>
+                        <button type="button" class="btn btn-warning shadow-sm">Update</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="p-2  " style="margin-top: 20px;max-height: fit-content;z-index: 1;" >
+        <div class="container-fluid shadow-lg" style="padding-top: 30px;background: white;max-width: 1250px;height: 300px;border-radius: 10px;">
+
+            <div class="table-responsive   ">
+                <table class="table table-striped ">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="iTable_body">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </footer>
+
+
+
+</div>
+
+
+<!--Order section-->
+<div id="order-section" class="page" style="display: none;background: #17a2b8;min-height: 100vh;height: auto" >
+    <main class="container-fluid " style="background: #17a2b8 ;height: auto;min-height: 100vh;min-width: 100%">
+        <div class="row mb-4" >
+            <div class="col-md-7" style="margin-top: 100px">
+                <label for="orderId" class="form-label fw-bold">Order_Id</label>
+                <div class="input-group">
+                    <input type="text"  id="OorderId" placeholder="Enter Order ID" style="border-radius: 10px">
+                    <button class="btn-primary" style="background: #2b1775;border-radius: 10px;width: fit-content"  >
+                        <img src="./Assets/Icon/search%20(1).png" alt="" style="width: 20px">
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-3" style="margin-top: 100px">
+                <label class="form-label fw-bold">Date</label>
+                <p class="form-control-plaintext">04.10.2024</p>
+            </div>
+            <div class="col-md-2" style="margin-top: 100px">
+                <label class="form-label fw-bold">Customer_id</label>
+                <p class="form-control-plaintext">200.00</p>
+            </div>
+        </div>
+
+        <div class="order-form" style="padding: 20px; background-color: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);border-radius: 8px;margin-top: 60px;">
+            <table class="table table-hover">
+                <thead class="table-primary">
+                <tr>
+                    <th style="vertical-align: middle;">Item_ID</th>
+                    <th style="vertical-align: middle;">Order_Id</th>
+                    <th style="vertical-align: middle;">Qty</th>
+                    <th style="vertical-align: middle;">Unit Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="vertical-align: middle;">I001</td>
+                    <td style="vertical-align: middle;">O001</td>
+                    <td style="vertical-align: middle;">10kg</td>
+                    <td style="vertical-align: middle;">200.00</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle;">I002</td>
+                    <td style="vertical-align: middle;">O002</td>
+                    <td style="vertical-align: middle;">2kg</td>
+                    <td style="vertical-align: middle;">100.00</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle;">I003</td>
+                    <td style="vertical-align: middle;">O003</td>
+                    <td style="vertical-align: middle;">1kg</td>
+                    <td style="vertical-align: middle;">300.00</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle;">I004</td>
+                    <td style="vertical-align: middle;">O004</td>
+                    <td style="vertical-align: middle;">7</td>
+                    <td style="vertical-align: middle;">150.00</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class=" d-grid mt-4">
+                <button class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+        <p class="text-center " style="margin-top: 100px; ">&copy; 2024 Kaif Zaki. All rights reserved.</p>
+    </main>
+
+
+</div>
+
+<!--placeOrder section-->
+<div id="placeOrder-section" class="page" style="display: none;">
+    <main >
+        <div class="container"  >
+            <form>
+                <div class="row mb-3" >
+                    <div class="col-md-4">
+                        <label for="customerId" class="form-label">Customer_Id</label>
+                        <input type="text" class="form-control" id="customerId">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="orderId" class="form-label">Order_Id</label>
+                        <input type="text" class="form-control" id="orderId" value="0001" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="orderDate" class="form-label">Order_Date</label>
+                        <input type="text" class="form-control" id="orderDate" value="05.10.2024" readonly>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="itemId" class="form-label">Item_Id</label>
+                        <input type="text" class="form-control" id="itemId">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="unitPrice" class="form-label">Unit Price</label>
+                        <input type="text" class="form-control" id="unitPrice" value="200.00" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="customerName" class="form-label">Customer_Name</label>
+                        <input type="text" class="form-control" id="customerName" value="Jhon" readonly>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="qty" class="form-label">Qty</label>
+                        <input type="text" class="form-control" id="qty">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" value="Bread" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="qtyOnHand" class="form-label">Qty On Hand</label>
+                        <input type="text" class="form-control" id="qtyOnHand" value="20" readonly>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="text-center add-btn">
+            <button type="button" class="btn btn-success">Add+</button>
+        </div>
+
+        <div class="container-fluid table-responsive" >
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th style="vertical-align: middle;">ID</th>
+                    <th style="vertical-align: middle;">Description</th>
+                    <th style="vertical-align: middle;">Qty</th>
+                    <th style="vertical-align: middle;">Unit Price</th>
+                    <th style="vertical-align: middle;">Total</th>
+                    <th style="vertical-align: middle;">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <span class="net-total mt-4">Net Total: 2000/=</span>
+            <div class="d-grid ">
+                <button type="button" class="btn btn-primary btn-print ">Print Bill</button>
+                <button type="button" class="btn btn-danger btn-order mt-4">Place Order</button>
+            </div>
+        </div>
+
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+    // function showPage(pageId) {
+    //     $('.page').hide();
+    //     $('#' + pageId).show();
+    // }
+    //
+    // $(document).ready(function() {
+    //     showPage('Home'); // Show home page by default open Page
+    // });
+
+
+    let  home_navigation=document.getElementById('home_nav');
+    let  customer_navigation=document.getElementById('customer_nav');
+    let  item_navigation=document.getElementById('item_nav');
+    let  placeOrder_navigation=document.getElementById('placeOrder_nav');
+    let  order_navigation=document.getElementById('order_nav');
+
+    let home_section=document.getElementById('Home-section');
+    let customer_section=document.getElementById('customer-section');
+    let item_section=document.getElementById('item-section');
+    let placeOrder_section=document.getElementById('placeOrder-section');
+    let order_section=document.getElementById('order-section');
+
+    customer_section.style.display='none';
+    item_section.style.display='none';
+    placeOrder_section.style.display='none';
+    order_section.style.display='none';
+
+    home_navigation.addEventListener('click',function (){
+        home_section.style.display='block';
+        customer_section.style.display='none';
+        item_section.style.display='none';
+        placeOrder_section.style.display='none';
+        order_section.style.display='none';
+    });
+
+    customer_navigation.addEventListener('click',function (){
+        home_section.style.display='none';
+        customer_section.style.display='block';
+        item_section.style.display='none';
+        placeOrder_section.style.display='none';
+        order_section.style.display='none';
+    });
+
+    item_navigation.addEventListener('click',function (){
+        home_section.style.display='none';
+        customer_section.style.display='none';
+        item_section.style.display='block';
+        placeOrder_section.style.display='none';
+        order_section.style.display='none';
+    });
+
+    placeOrder_navigation.addEventListener('click',function (){
+        home_section.style.display='none';
+        customer_section.style.display='none';
+        item_section.style.display='none';
+        placeOrder_section.style.display='block';
+        order_section.style.display='none';
+    });
+
+    order_navigation.addEventListener('click',function (){
+        home_section.style.display='none';
+        customer_section.style.display='none';
+        item_section.style.display='none';
+        placeOrder_section.style.display='none';
+        order_section.style.display='block';
+    });
+
+
+
+</script>
+<script src="js/jquery-3.7.1.min.js"></script>
+
+<script src="js/script.js"></script>
+</body>
+</html>
