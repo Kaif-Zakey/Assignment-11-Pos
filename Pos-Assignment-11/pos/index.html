@@ -152,7 +152,7 @@
 
         <div class=".custom-container mt-3  p-4" style="background: #eaecee;width: 100%">
             <div class="row " style="background: #eaecee;width: 100%">
-                <form>
+                <form id="frm-customer">
                     <div class="row d-flex justify-content-between  "  style="width: 100%" >
                         <div class="col-md-4 mb-3  custom-margin" >
                             <label for="cName" class="form-label">Name</label>
@@ -178,9 +178,7 @@
                     </div>
 
                     <div class="d-flex justify-content-around mt-3">
-                        <button id="customer_save_btn" type="button" class="btn btn-success shadow-sm">Save</button>
-                        <button id="customer_delete_btn"  type="button" class="btn btn-danger shadow-sm">Delete</button>
-                        <button id="customer_update_btn"   type="button" class="btn btn-warning shadow-sm">Update</button>
+                        <button id="customer_save_btn" type="button" class="btn btn-success shadow-sm">Add Customer</button>
                     </div>
                 </form>
 
@@ -201,6 +199,7 @@
                         <th scope="col">Phone No</th>
                         <th scope="col">Email</th>
                         <th scope="col">Address</th>
+                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody id="customerTableBody">
@@ -268,9 +267,8 @@
 
                     <!-- Action Buttons -->
                     <div class="d-flex justify-content-around mt-3">
-                        <button id="iSave_btn"    type="button" class="btn btn-success shadow-sm">Save</button>
-                        <button id="iDelete_btn"  type="button" class="btn btn-danger shadow-sm">Delete</button>
-                        <button id="iUpdate_btn"  type="button" class="btn btn-warning shadow-sm">Update</button>
+                        <button id="iSave_btn"    type="button" class="btn btn-success shadow-sm">Add Item</button>
+
                     </div>
                 </form>
 
@@ -308,71 +306,91 @@
 
 <!--Order section-->
 <div id="order-section" class="page" style="display: none;background: #17a2b8;min-height: 100vh;height: auto" >
-    <main class="container-fluid " style="background: #17a2b8 ;height: auto;min-height: 100vh;min-width: 100%">
-        <div class="row mb-4" >
-            <div class="col-md-7" style="margin-top: 100px">
-                <label for="orderId" class="form-label fw-bold">Order_Id</label>
-                <div class="input-group">
-                    <input type="text"  id="OorderId" placeholder="Enter Order ID" style="border-radius: 10px">
-                    <button class="btn-primary" style="background: #2b1775;border-radius: 10px;width: fit-content"  >
-                        <img src="../Assets/Icon/search%20(1).png" alt="" style="width: 20px">
-                    </button>
+
+    <section class="order_details">
+
+        <section class="order_details_cards" style="display: flex; flex-wrap: wrap; justify-content: center; position: relative; top: 100px;">
+            <div class="card border-primary mb-3">
+                <!--<div class="card-header">Order Details</div>-->
+                <div class="card-body text-primary">
+                    <h5 class="card-title">Order ID: O001</h5>
+                    <p class="card-text">Order Date: October 26, 2023</p>
+                    <p class="card-text">Customer ID: C001</p>
+                    <p class="card-text">Items: Item 1, Item 2, Item 3</p>
+                    <p class="card-text">Total: $500.00</p>
                 </div>
             </div>
-            <div class="col-md-3" style="margin-top: 100px">
-                <label class="form-label fw-bold">Date</label>
-                <p class="form-control-plaintext">04.10.2024</p>
-            </div>
-            <div class="col-md-2" style="margin-top: 100px">
-                <label class="form-label fw-bold">Customer_id</label>
-                <p class="form-control-plaintext">200.00</p>
-            </div>
-        </div>
 
-        <div class="order-form" style="padding: 20px; background-color: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);border-radius: 8px;margin-top: 60px;">
-            <table class="table table-hover">
-                <thead class="table-primary">
-                <tr>
-                    <th style="vertical-align: middle;">Item_ID</th>
-                    <th style="vertical-align: middle;">Order_Id</th>
-                    <th style="vertical-align: middle;">Qty</th>
-                    <th style="vertical-align: middle;">Unit Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td style="vertical-align: middle;">I001</td>
-                    <td style="vertical-align: middle;">O001</td>
-                    <td style="vertical-align: middle;">10kg</td>
-                    <td style="vertical-align: middle;">200.00</td>
-                </tr>
-                <tr>
-                    <td style="vertical-align: middle;">I002</td>
-                    <td style="vertical-align: middle;">O002</td>
-                    <td style="vertical-align: middle;">2kg</td>
-                    <td style="vertical-align: middle;">100.00</td>
-                </tr>
-                <tr>
-                    <td style="vertical-align: middle;">I003</td>
-                    <td style="vertical-align: middle;">O003</td>
-                    <td style="vertical-align: middle;">1kg</td>
-                    <td style="vertical-align: middle;">300.00</td>
-                </tr>
-                <tr>
-                    <td style="vertical-align: middle;">I004</td>
-                    <td style="vertical-align: middle;">O004</td>
-                    <td style="vertical-align: middle;">7</td>
-                    <td style="vertical-align: middle;">150.00</td>
-                </tr>
-                </tbody>
-            </table>
 
-            <div class=" d-grid mt-4">
-                <button class="btn btn-danger">Delete</button>
-            </div>
-        </div>
-        <p class="text-center " style="margin-top: 100px; ">&copy; 2024 Kaif Zaki. All rights reserved.</p>
-    </main>
+        </section>
+
+
+    </section>
+<!--    <main class="container-fluid " style="background: #17a2b8 ;height: auto;min-height: 100vh;min-width: 100%">-->
+<!--        <div class="row mb-4" >-->
+<!--            <div class="col-md-7" style="margin-top: 100px">-->
+<!--                <label for="orderId" class="form-label fw-bold">Order_Id</label>-->
+<!--                <div class="input-group">-->
+<!--                    <input type="text"  id="OorderId" placeholder="Enter Order ID" style="border-radius: 10px">-->
+<!--                    <button class="btn-primary" style="background: #2b1775;border-radius: 10px;width: fit-content"  >-->
+<!--                        <img src="../Assets/Icon/search%20(1).png" alt="" style="width: 20px">-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-3" style="margin-top: 100px">-->
+<!--                <label class="form-label fw-bold">Date</label>-->
+<!--                <p class="form-control-plaintext">04.10.2024</p>-->
+<!--            </div>-->
+<!--            <div class="col-md-2" style="margin-top: 100px">-->
+<!--                <label class="form-label fw-bold">Customer_id</label>-->
+<!--                <p class="form-control-plaintext">200.00</p>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="order-form" style="padding: 20px; background-color: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);border-radius: 8px;margin-top: 60px;">-->
+<!--            <table class="table table-hover">-->
+<!--                <thead class="table-primary">-->
+<!--                <tr>-->
+<!--                    <th style="vertical-align: middle;">Item_ID</th>-->
+<!--                    <th style="vertical-align: middle;">Order_Id</th>-->
+<!--                    <th style="vertical-align: middle;">Qty</th>-->
+<!--                    <th style="vertical-align: middle;">Unit Price</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                    <td style="vertical-align: middle;">I001</td>-->
+<!--                    <td style="vertical-align: middle;">O001</td>-->
+<!--                    <td style="vertical-align: middle;">10kg</td>-->
+<!--                    <td style="vertical-align: middle;">200.00</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="vertical-align: middle;">I002</td>-->
+<!--                    <td style="vertical-align: middle;">O002</td>-->
+<!--                    <td style="vertical-align: middle;">2kg</td>-->
+<!--                    <td style="vertical-align: middle;">100.00</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="vertical-align: middle;">I003</td>-->
+<!--                    <td style="vertical-align: middle;">O003</td>-->
+<!--                    <td style="vertical-align: middle;">1kg</td>-->
+<!--                    <td style="vertical-align: middle;">300.00</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="vertical-align: middle;">I004</td>-->
+<!--                    <td style="vertical-align: middle;">O004</td>-->
+<!--                    <td style="vertical-align: middle;">7</td>-->
+<!--                    <td style="vertical-align: middle;">150.00</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+
+<!--            <div class=" d-grid mt-4">-->
+<!--                <button class="btn btn-danger">Delete</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <p class="text-center " style="margin-top: 100px; ">&copy; 2024 Kaif Zaki. All rights reserved.</p>-->
+<!--    </main>-->
 
 
 </div>
@@ -381,83 +399,84 @@
 <div id="placeOrder-section" class="page" style="display: none;">
     <main >
         <div class="container"  >
-            <form>
+            <form STYLE="padding-top: 100px">
+
                 <div class="row mb-3" >
-                    <div class="col-md-4">
-                        <label for="customerId" class="form-label">Customer_Id</label>
-                        <input type="text" class="form-control" id="customerId">
+                    <div class="form-group col-md-4">
+                        <label for="oCustomer_id" class="form-label">Customer_Id</label>
+                        <select class="form-control" id="oCustomer_id">
+                        </select>
                     </div>
                     <div class="col-md-4">
                         <label for="orderId" class="form-label">Order_Id</label>
-                        <input type="text" class="form-control" id="orderId" value="0001" readonly>
+                        <input type="text" class="form-control" id="orderId"  readonly>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <div class="form-group col-md-4">
+                        <label for="order_item_id" class="form-label">Item_Id</label>
+                        <select class="form-control" id="order_item_id">
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="orderDate" class="form-label">Order_Date</label>
-                        <input type="text" class="form-control" id="orderDate" value="05.10.2024" readonly>
+                        <label for="oUnitPrice" class="form-label">Unit Price</label>
+                        <input type="text" class="form-control" id="oUnitPrice"  readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="oCustomerName" class="form-label">Customer_Name</label>
+                        <input type="text" class="form-control" id="oCustomerName"  readonly>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="itemId" class="form-label">Item_Id</label>
-                        <input type="text" class="form-control" id="itemId">
+                        <label for="oQty" class="form-label">Qty</label>
+                        <input type="text" class="form-control" id="oQty">
                     </div>
                     <div class="col-md-4">
-                        <label for="unitPrice" class="form-label">Unit Price</label>
-                        <input type="text" class="form-control" id="unitPrice" value="200.00" readonly>
+                        <label for="oDescription" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="oDescription"  readonly>
                     </div>
                     <div class="col-md-4">
-                        <label for="customerName" class="form-label">Customer_Name</label>
-                        <input type="text" class="form-control" id="customerName" value="Jhon" readonly>
+                        <label for="oQtyOnHand" class="form-label">Qty On Hand</label>
+                        <input type="text" class="form-control" id="oQtyOnHand" readonly>
                     </div>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label for="qty" class="form-label">Qty</label>
-                        <input type="text" class="form-control" id="qty">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="description" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="description" value="Bread" readonly>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="qtyOnHand" class="form-label">Qty On Hand</label>
-                        <input type="text" class="form-control" id="qtyOnHand" value="20" readonly>
-                    </div>
-                </div>
+                <button id="add_cart" type="button" class="btn btn-outline-success">+ Add to Cart</button>
+                <button id="remove" type="button" class="btn btn-outline-danger">Remove</button>
+
             </form>
-        </div>
-        <div class="text-center add-btn">
-            <button type="button" class="btn btn-success">Add+</button>
         </div>
 
         <div class="container-fluid table-responsive" >
             <table class="table ">
                 <thead>
                 <tr>
-                    <th style="vertical-align: middle;">ID</th>
-                    <th style="vertical-align: middle;">Description</th>
-                    <th style="vertical-align: middle;">Qty</th>
-                    <th style="vertical-align: middle;">Unit Price</th>
+                    <th style="vertical-align: middle;">Item_ID</th>
+                    <th style="vertical-align: middle;">Desc</th>
+                    <th style="vertical-align: middle;">Qty.</th>
                     <th style="vertical-align: middle;">Total</th>
-                    <th style="vertical-align: middle;">Action</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="order_table_body">
 
                 </tbody>
             </table>
 
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mt-4">
-            <span class="net-total mt-4">Net Total: 2000/=</span>
-            <div class="d-grid ">
-                <button type="button" class="btn btn-primary btn-print ">Print Bill</button>
-                <button type="button" class="btn btn-danger btn-order mt-4">Place Order</button>
+        <section class="row g-3">
+            <button id="place_ord" type="button" class="btn btn-outline-success">Place Order</button>
+
+            <div class="col-auto">
+                <label for="final_total" class="form-label">Total</label>
+                <input id="final_total" type="text" class="form-control" id="final_total"
+                       aria-describedby="emailHelp">
             </div>
-        </div>
+        </section>
 
 
     </main>
@@ -546,5 +565,9 @@
 
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module"  src="controller/ItemController.js"></script>
+<script type="module"  src="controller/OrderController.js"></script>
+<script type="module" src="controller/OrderHistoryController.js"></script>
+
+
 </body>
 </html>

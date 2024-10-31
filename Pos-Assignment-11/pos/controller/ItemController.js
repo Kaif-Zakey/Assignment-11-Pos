@@ -1,152 +1,214 @@
-import ItemModel   from "../model/ItemModel.js";
-import {customer_array,item_array,order_array} from "../db/database.js";
+import { item_array } from "../db/database.js";
+import ItemModel from "../model/ItemModel.js";
+
+let selectedItemId = null;
+
 
 const loadItemTable = () => {
     $("#iTable_body").empty();
-    item_array.map((item,index)=> {
-        console.log(item);
-        let data = `<tr><td>${item.id}</td><td>${item.name}</td><td>${item.quantity}</td><td>${item.price}</td><td>${item.description}</td></tr>`
-        $("#iTable_body").append(data);
-        })
+    item_array.forEach((item) => {
+        const row = `
+        <tr>
+        <td>${item.id}</td>
+        <td>${item.name}</td>
+        <td>${item.qty}</td>
+        <td>Rs. ${parseFloat(item.price).toFixed(2)}</td>
+        <td>${item.description}</td>
+        <td>
+            <button class="btn btn-sm btn-primary me-2" onclick="editItem('${item.id}')">
+                <i class="fas fa-edit"></i> Update
+            </button>
+            <button class="btn btn-sm btn-danger" onclick="deleteItem('${item.id}')">
+                <i class="fas fa-trash"></i> Delete
+            </button>
+        </td>
+        </tr>`;
+        $("#iTable_body").append(row);
+    });
+};
+
+
+function generateItemId() {
+    let maxId = 0;
+    item_array.forEach(item => {
+        const idNumber = parseInt(item.id.replace('I', ''));
+        if (idNumber > maxId) maxId = idNumber;
+    });
+    return `I${maxId + 1}`;
 }
 
-const cleanItemForm = () => {
-    $('#iName').val("");
-    $('#iQty').val("");
-    $('#iPrice').val("");
-    $('#iDescription').val("");
-}
 
-let selected_item_index = null;
+$("#iSave_btn").on('click', function() {
 
-$("#iSave_btn").on('click',function(){
-    let iName = $('#iName').val();
-    let iQuantity = $('#iQty').val();
-    let iPrice = $('#iPrice').val();
-    let iDescription = $('#iDescription').val();
+    const itemData = {
+        name: $("#iName").val().trim(),
+        price: parseFloat($("#iPrice").val()),
+        qty: parseInt($("#iQty").val()),
+        description: $("#iDescription").val().trim()
+    };
 
-    console.log("iname: ", iName);
 
-    if(iName.length ===0) {
-        swal.fire({
-            icon: "error",
-            title: "Invalid Input",
-            text: "Invalid Name"
-        });
+    if (!validateFields(itemData)) return;
 
-    }else if (iQuantity.length ===0) {
-        swal.fire({
-            icon: "error",
-            title: "Invalid Input",
-            text: "Invalid Quantity"
-        });
-    }else if (iPrice.length ===0) {
-            swal.fire({
-            icon: "error",
-            title: "Invalid Input",
-            text: "Invalid Price"
-        });
-    }else {
-        let  item = new ItemModel(
-            item_array.length + 1,
-            iName,
-            iQuantity,
-            iPrice,
-            iDescription);
+    if ($(this).text() === "Add Item") {
+        if (isDuplicateName(itemData.name)) {
+            showError('Duplicate Name', 'This item name is already registered');
+            return;
+        }
 
-        item_array.push(item);
-        loadItemTable();
-        cleanItemForm();
+
+        const newItem = new ItemModel(
+            generateItemId(),
+            itemData.name,
+            itemData.price,
+            itemData.qty,
+            itemData.description
+        );
+
+        item_array.push(newItem);
+        showSuccess('Success', 'Item added successfully!');
+        loadItemTable()
+    } else {
+        if (isDuplicateName(itemData.name, selectedItemId)) {
+            showError('Duplicate Name', 'This item name is already registered');
+            return;
+        }
+
+        const index = item_array.findIndex(i => i.id === selectedItemId);
+        if (index !== -1) {
+            item_array[index] = new ItemModel(
+                selectedItemId,
+                itemData.name,
+                itemData.price,
+                itemData.qty,
+                itemData.description
+            );
+            showSuccess('Success', 'Item updated successfully!');
+            orderController.loadItems();
+            $(this).text("Add Item");
+        }
     }
 
-
+    loadItemTable();
+    clearForm();
 });
 
-$('#iTable_body').on('click','tr',function(){
-   let index =$(this).index();
 
-   selected_item_index=$(this).index();
+window.editItem = function(id) {
+    selectedItemId = id;
+    const item = item_array.find(i => i.id === id);
 
-   let  item_obj = item_array[index];
+    if (item) {
+        $("#iName").val(item.name);
+        $("#iPrice").val(item.price);
+        $("#iQty").val(item.qty);
+        $("#iDescription").val(item.description);
+        $("#iSave_btn").text("Update Item");
 
-   let iName = item_obj.name;
-    let iQuantity = item_obj.quantity;
-    let iPrice = item_obj.price;
-    let iDescription = item_obj.description;
-
-    $('#iName').val(iName);
-    $('#iQty').val(iQuantity);
-    $('#iPrice').val(iPrice);
-    $('#iDescription').val(iDescription);
+        showToast('Edit Mode', `Now editing ${item.name}`);
+    }
+};
 
 
-});
-
-$('#iUpdate_btn').on('click',function(){
-   let index = selected_item_index;
-
-    let iName = $('#iName').val();
-     let iQuantity = $('#iQty').val();
-     let iPrice = $('#iPrice').val();
-     let iDescription = $('#iDescription').val();
-
-     let item = new ItemModel(
-         item_array[index].id,
-         iName,
-         iQuantity,
-         iPrice,
-         iDescription
-     );
-
-     item_array[selected_item_index]=item;
-     loadItemTable();
-     cleanItemForm();
-
-});
-
-$('#iDelete_btn').on('click',function(){
-
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-    });
-
-    swalWithBootstrapButtons.fire({
+window.deleteItem = function(id) {
+    Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
-
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
-        if(result.isConfirmed) {
-            item_array.splice(selected_item_index,1);
-            loadItemTable();
-            cleanItemForm();
-
-            swalWithBootstrapButtons.fire({
-                title: 'Deleted!',
-                text: 'Your file has been deleted.',
-                icon: 'success',
-
-            });
-
-        }else if (
-            result.dismiss === Swal.DismissReason.cancel
-
-        ){
-            swalWithBootstrapButtons.fire({
-                title: 'Cancelled',
-                text: 'Your file is safe :)',
-                icon: 'error'
-            });
+        if (result.isConfirmed) {
+            const index = item_array.findIndex(i => i.id === id);
+            if (index !== -1) {
+                item_array.splice(index, 1);
+                loadItemTable();
+                if (selectedItemId === id) {
+                    clearForm();
+                }
+                showSuccess('Deleted!', 'Item has been deleted.');
+            }
         }
     });
+};
 
+
+function validateFields(data) {
+    if (!data.name) {
+        showError('Validation Error', 'Please enter item name');
+        return false;
+    }
+    if (!data.price || isNaN(data.price)) {
+        showError('Validation Error', 'Please enter a valid price');
+        return false;
+    }
+    if (data.price <= 0) {
+        showError('Validation Error', 'Price must be greater than 0');
+        return false;
+    }
+    if (!data.qty || isNaN(data.qty)) {
+        showError('Validation Error', 'Please enter a valid quantity');
+        return false;
+    }
+    if (data.qty < 0) {
+        showError('Validation Error', 'Quantity cannot be negative');
+        return false;
+    }
+    if (!data.description) {
+        showError('Validation Error', 'Please enter category');
+        return false;
+    }
+    return true;
+}
+
+function isDuplicateName(name, excludeId = null) {
+    return item_array.some(i =>
+        i.id !== excludeId && i.name.toLowerCase() === name.toLowerCase()
+    );
+}
+
+
+function showError(title, text) {
+    Swal.fire({
+        icon: 'error',
+        title,
+        text,
+        confirmButtonColor: '#3085d6'
+    });
+}
+
+function showSuccess(title, text) {
+    Swal.fire({
+        icon: 'success',
+        title,
+        text,
+        timer: 1500,
+        showConfirmButton: false
+    });
+}
+
+function showToast(title, text) {
+    Swal.fire({
+        icon: 'info',
+        title,
+        text,
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+}
+
+
+function clearForm() {
+    $("#frm-item")[0].reset();
+    selectedItemId = null;
+    $("#btn-save-item").text("Add Item");
+}
+
+
+$(document).ready(function() {
+    loadItemTable();
 });
-
