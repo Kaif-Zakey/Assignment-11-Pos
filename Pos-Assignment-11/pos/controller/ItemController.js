@@ -67,7 +67,7 @@ $("#iSave_btn").on('click', function() {
 
         item_array.push(newItem);
         showSuccess('Success', 'Item added successfully!');
-        loadItemTable()
+        orderController.loadItems();
     } else {
         if (isDuplicateName(itemData.name, selectedItemId)) {
             showError('Duplicate Name', 'This item name is already registered');

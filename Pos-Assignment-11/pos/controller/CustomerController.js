@@ -74,7 +74,7 @@ $("#customer_save_btn").on('click', function() {
 
         customer_array.push(newCustomer);
         showSuccess('Success', 'Customer added successfully!');
-        loadCustomerTable()
+        orderController.loadCustomers()
 
     } else {
         if (isDuplicateEmail(customerData.email, selectedCustomerId)) {
